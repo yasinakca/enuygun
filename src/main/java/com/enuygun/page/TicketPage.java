@@ -1,7 +1,9 @@
 package com.enuygun.page;
 
+import com.enuygun.Log4j;
 import com.enuygun.base.BasePage;
 import com.enuygun.helper.DateUtil;
+import com.oracle.tools.packager.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,12 +42,14 @@ public class TicketPage extends BasePage {
         clickWithJs(ORIGIN_INPUT);
         sendKeys(ORIGIN_INPUT, origin);
         clickWithJs(FIRST_ITEM);
+        Log4j.info("Origin filled");
     }
 
     public void fillDestionation(String destination) {
         sendKeys(DESTINATION_INPUT, destination);
         hoverElement(DESTINATION_FIRST_ITEM);
         clickWithJs(DESTINATION_FIRST_ITEM);
+        Log4j.info("Destination filled");
     }
 
     public void clickDepartureDate() {
@@ -56,6 +60,7 @@ public class TicketPage extends BasePage {
         WebElement dateWidget = findElement(By.xpath("(//table[@class='CalendarMonth_table CalendarMonth_table_1'])[2]"));
         List<WebElement> columns = dateWidget.findElements(By.tagName("td"));
         DateUtil.clickGivenDay(columns, gidisTarih);
+        Log4j.info("Departure date selected");
     }
 
     public void clickReturnDate() {
@@ -66,6 +71,7 @@ public class TicketPage extends BasePage {
         WebElement dateWidget = findElement(By.xpath("(//table[@class='CalendarMonth_table CalendarMonth_table_1'])[3]"));
         List<WebElement> columns = dateWidget.findElements(By.tagName("td"));
         DateUtil.clickGivenDay(columns, gidisTarih);
+        Log4j.info("Return date selected");
     }
 
     public void selectTransit() {
@@ -81,14 +87,16 @@ public class TicketPage extends BasePage {
         for (int i = 1; i < num; i++) {
             clickWithJs(ADULT_PASSENGER);
         }
+        Log4j.info("Adult passenger selected");
     }
 
     public void selectChildPassenger(int num) {
-        //num en fazla 8 olabilir, kontrol ekle
+        //num en fazla 8 olabilir, kontrol eklenebilir
         hoverElement(CHILD_PASSENGER);
         for (int i = 0; i < num; i++) {
             clickWithJs(CHILD_PASSENGER);
         }
+        Log4j.info("Child passenger selected");
     }
 
     public void selectBabyPassenger(int num) {
@@ -96,6 +104,7 @@ public class TicketPage extends BasePage {
         for (int i = 0; i < num; i++) {
             clickWithJs(BABY_PASSENGER);
         }
+        Log4j.info("Baby passenger selected");
     }
 
     public void selectOldPassenger(int num) {
@@ -103,6 +112,7 @@ public class TicketPage extends BasePage {
         for (int i = 0; i < num; i++) {
             clickWithJs(OLD_PASSENGER);
         }
+        Log4j.info("Old passenger selected");
     }
 
     public void selectStudentPassenger(int num) {
@@ -110,6 +120,7 @@ public class TicketPage extends BasePage {
         for (int i = 0; i < num; i++) {
             clickWithJs(STUDENT_PASSENGER);
         }
+        Log4j.info("Student passenger selected");
     }
 
     public enum TICKETTYPE {
@@ -133,6 +144,7 @@ public class TicketPage extends BasePage {
                 clickWithJs(BUSNINESS);
                 break;
         }
+        Log4j.info("ticket type selected");
     }
 
     public void clickOkButton() {

@@ -5,6 +5,7 @@ import com.enuygun.page.FlightDetailPage;
 import com.enuygun.page.HomePage;
 import com.enuygun.page.TicketPage;
 import org.junit.Before;
+
 import java.util.concurrent.TimeUnit;
 
 public class Test extends BaseTest {
@@ -21,7 +22,9 @@ public class Test extends BaseTest {
 
     @org.junit.Test
     public void endToEnd() throws InterruptedException {
-        homePage.submitHomePage();
+        homePage.navigate();
+        homePage.clickFlightTicketTab();
+        homePage.isHomePage();
         TimeUnit.MILLISECONDS.sleep(1000);
         ticketPage.fillOrigin("Istabul");
         TimeUnit.MILLISECONDS.sleep(1000);
@@ -40,6 +43,6 @@ public class Test extends BaseTest {
         ticketPage.selectTicketType(TicketPage.TICKETTYPE.ECONOMY);
         ticketPage.clickOkButton();
         ticketPage.clickSearchFlightButton();
-        TimeUnit.SECONDS.sleep(5);
+        flightDetailPage.isDetailPage();
     }
 }

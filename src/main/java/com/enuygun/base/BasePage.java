@@ -20,9 +20,6 @@ public class BasePage {
     public WebElement findElement(By by) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
-    public WebElement findElements(By by) {
-        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
-    }
 
     public void clickElement(By by) {
         try {
